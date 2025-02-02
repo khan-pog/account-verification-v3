@@ -118,7 +118,9 @@ export function AccountVerificationFormProvider({ children }) {
   async function goToConsent(action = null) {
     let userId = sessionStorage.getItem("userId")
     const token = await getClientToken(userId);
-    window.location = (`https://consent.basiq.io/home?userId=${userId}&token=${token}&action=${action}`);
+    // Specify the success page URL in your application
+    const redirectUrl = `${window.location.origin}/account-verification?step=success`;
+    window.location = (`https://consent.basiq.io/home?userId=${userId}&token=${token}&action=${action}&redirectUrl=${redirectUrl}`);
   }
 
   const contextValue = {
